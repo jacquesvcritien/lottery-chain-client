@@ -1,0 +1,17 @@
+syntax = "proto3";
+package lottery.lottery;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "lottery/lottery/params.proto";
+
+option go_package = "lottery/x/lottery/types";
+
+// GenesisState defines the lottery module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

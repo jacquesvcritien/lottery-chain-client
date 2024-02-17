@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package lottery.lottery;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "lottery/lottery/params.proto";
+
+option go_package = "lottery/x/lottery/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  
+  // Parameters queries the parameters of the module.
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/lottery/lottery/params";
+  
+  }
+  
+  // Queries a list of ShowNumber items.
+  rpc ShowNumber (QueryShowNumberRequest) returns (QueryShowNumberResponse) {
+    option (google.api.http).get = "/lottery/lottery/show_number/{address}";
+  
+  }
+  
+  // Queries a list of ShowPrivateLotteryNumber items.
+  rpc ShowPrivateLotteryNumber (QueryShowPrivateLotteryNumberRequest) returns (QueryShowPrivateLotteryNumberResponse) {
+    option (google.api.http).get = "/lottery/lottery/show_private_lottery_number/{lottery}/{address}";
+  
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+}
+
+message QueryShowNumberRequest {
+  string address = 1;
+}
+
+message QueryShowNumberResponse {
+  string number = 1;
+}
+
+message QueryShowPrivateLotteryNumberRequest {
+  string lottery = 1;
+  string address = 2;
+}
+
+message QueryShowPrivateLotteryNumberResponse {
+  string number = 1;
+}
+

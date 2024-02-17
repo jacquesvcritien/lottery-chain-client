@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package lottery.lottery;
+
+option go_package = "lottery/x/lottery/types";
+
+message StakingLotteryOutcome {
+  uint64 roundId = 1;
+  uint64 number = 2;
+}

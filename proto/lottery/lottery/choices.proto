@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package lottery.lottery;
+
+option go_package = "lottery/x/lottery/types";
+
+message StakingLotteryParticipants {
+  map<string, uint64> participants = 1;
+}
+
+message PrivateLotteryParticipants {
+  map<string, bool> participants = 1;
+}
+
+message PrivateLotteryChoices {
+  map<string, PrivateLotteryParticipants> choices = 1;
+}

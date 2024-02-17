@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package lottery.lottery;
+
+option go_package = "lottery/x/lottery/types";
+
+message PrivateLottery {
+  string id = 1;
+  string totalPrize = 2;
+  string pricePercentages = 3;
+  string winnerRequirements = 4;
+  uint32 maxNumber = 5;
+  uint32 correctNumbers = 6;
+  string creator = 7;
+  uint64 createdHeight = 8;
+  string prizesPaid = 9;
+  string entryFee = 10;
+}
+
+message NewPrivateLotteryEvent {
+  string id    = 1;
+}

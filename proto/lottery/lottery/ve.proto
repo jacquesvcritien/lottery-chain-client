@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package lottery.lottery;
+
+option go_package = "lottery/x/lottery/types";
+
+message ServerResponse {
+  string roundId = 1;
+  uint64 randomNumber = 2;
+  string token = 3;
+}
